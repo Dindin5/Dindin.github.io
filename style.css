@@ -5,6 +5,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin: 0;
 }
 
 .card {
@@ -14,6 +15,9 @@ body {
   text-align: center;
   width: 380px;
   box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+  margin: 0 auto;
+  position: relative; /* pentru confetti */
+  z-index: 1;
 }
 
 button {
@@ -42,6 +46,27 @@ button:hover { transform: scale(1.1); }
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* MENU */
+#menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  text-align: center;
+}
+
+#menu h2 {
+  margin-bottom: 15px;
+}
+
+#menu button {
+  margin: 8px 0;
+  width: 180px;
+  font-size: 16px;
+}
+
+/* SECTIONS */
 .section {
   margin-top: 20px;
   animation: fade 1s;
@@ -59,4 +84,15 @@ button:hover { transform: scale(1.1); }
 video {
   display: block;
   margin: 10px auto;
+}
+
+/* CONFETTI */
+#confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none; /* butoanele clicabile */
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 }
