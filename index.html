@@ -15,7 +15,7 @@
     <button id="no">NO</button>
   </div>
 
-  <!-- MENIU DUPĂ YES -->
+  <!-- MENIU -->
   <div id="menu" class="hidden">
     <h2>Choose 💖</h2>
     <button onclick="showSection('message')">💌 Message</button>
@@ -24,34 +24,33 @@
   </div>
 
   <!-- MESSAGE -->
-  <div id="message" class="hidden section">
-    <p>De Ziua Îndrăgostiților vreau să-ți spun cât de mult însemni pentru mine. ❤️</p>
+  <div id="message" class="section hidden">
+   <p>De Ziua Îndrăgostiților vreau să-ți spun cât de mult însemni pentru mine. ❤️</p> 
     <p>Alaturi de tine, zilele prind nuante noi,iar clipele simple alaturi de tine pe care le trasformi in momente speciale sunt cele mai frumoase. </p>
-    <p>Iti multumesc pentru tot ce aduci in viata mea. Eti acel Home pe care nu stiam ca il caut si fara de care nu pot. </p>
+    <p>Iti multumesc pentru tot ce aduci in viata mea. Esti acel Home pe care nu stiam ca il caut si fara de care nu pot. </p> 
     <p>Te iubesc ❤️ </p>
   </div>
 
   <!-- MEMORIES -->
-  <div id="memories" class="hidden section gallery">
+  <div id="memories" class="section hidden gallery">
     <img src="assets/img/1.jpg">
     <img src="assets/img/2.jpg">
-    <video controls width="280">
+    <video controls>
       <source src="assets/video/memory.mp4" type="video/mp4">
-      Browserul tău nu suportă video.
     </video>
   </div>
 
   <!-- GIFT -->
-  <div id="gift" class="hidden section">
+  <div id="gift" class="section hidden">
     <p>Surpriza te așteaptă 🎁</p>
     <a href="https://example.com" target="_blank">Deschide cadoul 🎁</a>
   </div>
 </div>
 
 <canvas id="confetti"></canvas>
-<audio id="music" src="assets/music/song.mp3"></audio>
+
+<audio id="music" src="assets/music/song.mp3" preload="auto"></audio>
 
 <script src="script.js"></script>
 </body>
 </html>
-
