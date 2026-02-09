@@ -13,7 +13,7 @@ no.addEventListener("mouseover", () => {
 // YES button
 yes.addEventListener("click", () => {
   document.querySelector(".buttons").style.display = "none";
-  menu.classList.remove("hidden");
+  menu.classList.remove("hidden");  // meniul apare centrat
   music.play();
   launchConfetti();
 });
