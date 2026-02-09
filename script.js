@@ -3,25 +3,31 @@ const no = document.getElementById("no");
 const menu = document.getElementById("menu");
 const music = document.getElementById("music");
 
-// NO button fuge
+// NO fuge
 no.addEventListener("mouseover", () => {
   const x = Math.random() * 200 - 100;
   const y = Math.random() * 200 - 100;
   no.style.transform = `translate(${x}px, ${y}px)`;
 });
 
-// YES button
+// YES
 yes.addEventListener("click", () => {
   document.querySelector(".buttons").style.display = "none";
-  menu.classList.remove("hidden");  // meniul apare centrat
-  music.play();
+  menu.classList.remove("hidden");
+
+  music.currentTime = 0;
+  music.play().catch(() => {});
+
   launchConfetti();
 });
 
-// Afișare secțiune
+// arată secțiuni
 function showSection(id) {
-  document.querySelectorAll(".section").forEach(s => s.classList.add("hidden"));
-  document.getElementById(id).classList.remove("hidden");
+  document.querySelectorAll(".section").forEach(sec => {
+    sec.style.display = "none";
+  });
+
+  document.getElementById(id).style.display = "block";
 }
 
 /* CONFETTI */
@@ -31,7 +37,7 @@ function launchConfetti() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
-  const pieces = Array.from({length: 150}, () => ({
+  const pieces = Array.from({ length: 120 }, () => ({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
     r: Math.random() * 6 + 2,
@@ -39,10 +45,10 @@ function launchConfetti() {
   }));
 
   function animate() {
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     pieces.forEach(p => {
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fillStyle = "#ff4d6d";
       ctx.fill();
       p.y += p.dy;
