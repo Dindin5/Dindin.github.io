@@ -49,34 +49,7 @@
 
 <canvas id="confetti"></canvas>
 
- <!-- Elementul audio -->
-    <audio id="valentine-music" loop>
-        <source src="assets/music/song.mp3" type="audio/mpeg">
-    </audio>
-    
-    <!-- Buton de control -->
-    <button id="music-btn" onclick="toggleMusic()">
-        🎵 Pornește Muzica
-    </button>
-    
-    <script>
-        const music = document.getElementById('valentine-music');
-        const btn = document.getElementById('music-btn');
-        
-        function toggleMusic() {
-            if (music.paused) {
-                music.play();
-                btn.textContent = '⏸️ Oprește Muzica';
-                btn.style.background = '#ffcccc';
-            } else {
-                music.pause();
-                btn.textContent = '🎵 Pornește Muzica';
-                btn.style.background = 'pink';
-            }
-        }
-        
-        // Setează volumul la 50% (opțional)
-        music.volume = 0.5;
+
 </script>
 </body>
 </html>
