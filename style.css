@@ -13,10 +13,9 @@ body {
   padding: 40px;
   border-radius: 20px;
   text-align: center;
-  width: 380px;
+  width: 420px;
   box-shadow: 0 25px 50px rgba(0,0,0,0.2);
-  margin: 0 auto;
-  position: relative; /* pentru confetti */
+  position: relative;
   z-index: 1;
 }
 
@@ -46,53 +45,32 @@ button:hover { transform: scale(1.1); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* MENU */
-#menu {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-  text-align: center;
-}
-
-#menu h2 {
-  margin-bottom: 15px;
-}
-
 #menu button {
-  margin: 8px 0;
-  width: 180px;
-  font-size: 16px;
+  width: 200px;
 }
 
-/* SECTIONS */
 .section {
   margin-top: 20px;
-  animation: fade 1s;
 }
 
 .gallery img, .gallery video {
-  width: 90px;
-  margin: 5px;
+  width: 120px;
+  margin: 6px;
   border-radius: 10px;
-  transition: 0.3s;
 }
-
-.gallery img:hover, .gallery video:hover { transform: scale(1.2); }
 
 video {
   display: block;
   margin: 10px auto;
+  width: 260px;
 }
 
-/* CONFETTI */
 #confetti {
   position: fixed;
   top: 0;
   left: 0;
-  pointer-events: none; /* butoanele clicabile */
   width: 100%;
   height: 100%;
+  pointer-events: none;
   z-index: 0;
 }
