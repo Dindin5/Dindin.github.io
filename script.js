@@ -6,14 +6,20 @@ const music = document.getElementById("music");
 const giftText = "Cadoul meu sunt eu, timpul meu și toată iubirea mea ❤️";
 let giftIndex = 0;
 
-/* NO fuge */
+/* HARD RESET LA START */
+document.querySelectorAll(".section").forEach(sec => {
+  sec.style.display = "none";
+});
+menu.style.display = "none";
+
+/* NO fuge 😈 */
 no.addEventListener("mouseover", () => {
   const x = Math.random() * 200 - 100;
   const y = Math.random() * 200 - 100;
   no.style.transform = `translate(${x}px, ${y}px)`;
 });
 
-/* YES */
+/* YES = green light */
 yes.addEventListener("click", () => {
   document.querySelector(".buttons").style.display = "none";
   menu.style.display = "block";
@@ -21,15 +27,16 @@ yes.addEventListener("click", () => {
   launchConfetti();
 });
 
-/* afișare secțiuni */
+/* AFIȘARE SECȚIUNI */
 function showSection(id) {
   document.querySelectorAll(".section").forEach(sec => {
-    sec.classList.remove("active");
+    sec.style.display = "none";
   });
-  document.getElementById(id).classList.add("active");
+
+  document.getElementById(id).style.display = "block";
 }
 
-/* GIFT typewriter */
+/* GIFT – TYPEWRITER */
 function startGift() {
   const el = document.getElementById("typewriter");
   el.innerHTML = "";
@@ -68,5 +75,6 @@ function launchConfetti() {
     });
     requestAnimationFrame(animate);
   }
+
   animate();
 }
