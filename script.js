@@ -1,79 +1,89 @@
-const yes = document.getElementById("yes");
-const no = document.getElementById("no");
-const menu = document.getElementById("menu");
-const music = document.getElementById("music");
+document.addEventListener("DOMContentLoaded", () => {
 
-const giftText = "Cadoul meu sunt eu, timpul meu și toată iubirea mea ❤️";
-let giftIndex = 0;
+  const yes = document.getElementById("yes");
+  const no = document.getElementById("no");
+  const menu = document.getElementById("menu");
+  const music = document.getElementById("music");
 
-/* NO fuge */
-no.addEventListener("mouseover", () => {
-  const x = Math.random() * 200 - 100;
-  const y = Math.random() * 200 - 100;
-  no.style.transform = `translate(${x}px, ${y}px)`;
-});
+  const giftText = "Cadoul meu sunt eu, timpul meu și toată iubirea mea ❤️";
+  let giftIndex = 0;
 
-/* YES */
-yes.addEventListener("click", () => {
-  document.querySelector(".buttons").style.display = "none";
-  menu.classList.remove("hidden");
-
-  music.play().catch(() => {});
-  launchConfetti();
-});
-
-/* ARATĂ DOAR SECȚIUNEA ALEASĂ */
-function showSection(id) {
+  /* ASCUNDE TOT LA START */
+  menu.classList.add("hidden");
   document.querySelectorAll(".section").forEach(sec => {
     sec.classList.add("hidden");
   });
 
-  document.getElementById(id).classList.remove("hidden");
+  /* NO fuge */
+  no.addEventListener("mouseover", () => {
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
+    no.style.transform = `translate(${x}px, ${y}px)`;
+  });
 
-  if (id !== "gift") {
-    document.getElementById("typewriter").innerHTML = "";
-    giftIndex = 0;
-  }
-}
+  /* YES */
+  yes.addEventListener("click", () => {
+    document.querySelector(".buttons").style.display = "none";
+    menu.classList.remove("hidden");
 
-/* GIFT TYPEWRITER */
-function startGift() {
-  const el = document.getElementById("typewriter");
-  el.innerHTML = "";
-  giftIndex = 0;
+    music.play().catch(() => {});
+    launchConfetti();
+  });
 
-  const interval = setInterval(() => {
-    el.innerHTML += giftText[giftIndex];
-    giftIndex++;
-    if (giftIndex >= giftText.length) clearInterval(interval);
-  }, 60);
-}
-
-/* CONFETTI */
-function launchConfetti() {
-  const canvas = document.getElementById("confetti");
-  const ctx = canvas.getContext("2d");
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  const pieces = Array.from({ length: 120 }, () => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 6 + 2,
-    dy: Math.random() * 3 + 1
-  }));
-
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    pieces.forEach(p => {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = "#ff4d6d";
-      ctx.fill();
-      p.y += p.dy;
-      if (p.y > canvas.height) p.y = 0;
+  /* ARATĂ DOAR SECȚIUNEA ALEASĂ */
+  window.showSection = function (id) {
+    document.querySelectorAll(".section").forEach(sec => {
+      sec.classList.add("hidden");
     });
-    requestAnimationFrame(animate);
+
+    document.getElementById(id).classList.remove("hidden");
+
+    if (id !== "gift") {
+      document.getElementById("typewriter").innerHTML = "";
+      giftIndex = 0;
+    }
+  };
+
+  /* GIFT TYPEWRITER */
+  window.startGift = function () {
+    const el = document.getElementById("typewriter");
+    el.innerHTML = "";
+    giftIndex = 0;
+
+    const interval = setInterval(() => {
+      el.innerHTML += giftText[giftIndex];
+      giftIndex++;
+      if (giftIndex >= giftText.length) clearInterval(interval);
+    }, 60);
+  };
+
+  /* CONFETTI */
+  function launchConfetti() {
+    const canvas = document.getElementById("confetti");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const pieces = Array.from({ length: 120 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 6 + 2,
+      dy: Math.random() * 3 + 1
+    }));
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = "#ff4d6d";
+        ctx.fill();
+        p.y += p.dy;
+        if (p.y > canvas.height) p.y = 0;
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
   }
-  animate();
-}
+
+});
