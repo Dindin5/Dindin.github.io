@@ -9,33 +9,27 @@
 
 <div class="card">
 
-  <!-- TITLU -->
-  <h1 class="fade-in">Will you be my Valentine? 💕</h1>
+  <h1>Will you be my Valentine? 💕</h1>
 
-  <!-- BUTOANE YES / NO -->
-  <div class="buttons fade-in">
+  <div class="buttons">
     <button id="yes">YES</button>
     <button id="no">NO</button>
   </div>
 
-  <!-- MENIU (ASCUNS LA ÎNCEPUT) -->
-  <div id="menu" class="hidden">
+  <div id="menu">
     <h2>Choose 💖</h2>
     <button onclick="showSection('message')">💌 Message</button>
     <button onclick="showSection('memories')">📸 Memories</button>
     <button onclick="showSection('gift')">🎁 Gift</button>
   </div>
 
-  <!-- MESSAGE -->
-  <div id="message" class="section hidden">
+  <div id="message" class="section">
     <p>De Ziua Îndrăgostiților vreau să-ți spun cât de mult însemni pentru mine ❤️</p>
-    <p>Alături de tine, zilele prind nuanțe noi și clipele simple devin magice.</p>
     <p>Ești acel <b>Home</b> pe care nu știam că îl caut.</p>
     <p><b>Te iubesc ❤️</b></p>
   </div>
 
-  <!-- MEMORIES -->
-  <div id="memories" class="section hidden gallery">
+  <div id="memories" class="section gallery">
     <div class="row">
       <img src="assets/img/1.jpg">
       <img src="assets/img/2.jpg">
@@ -47,8 +41,7 @@
     </div>
   </div>
 
-  <!-- GIFT -->
-  <div id="gift" class="section hidden">
+  <div id="gift" class="section">
     <p>Am un cadou pentru tine… 🎁</p>
     <button onclick="startGift()">Deschide 💖</button>
     <p id="typewriter"></p>
