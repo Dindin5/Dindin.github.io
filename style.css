@@ -7,6 +7,7 @@ body {
   height: 100vh;
   margin: 0;
 }
+
 .card {
   background: white;
   padding: 40px;
@@ -28,11 +29,22 @@ button {
   transition: 0.3s;
 }
 
-button:hover { transform: scale(1.1); }
+button:hover {
+  transform: scale(1.1);
+}
 
-#yes { background: #ff4d6d; color: white; }
-#no { background: #ccc; }
-.hidden { display: none; }
+#yes {
+  background: #ff4d6d;
+  color: white;
+}
+
+#no {
+  background: #ccc;
+}
+
+.hidden {
+  display: none;
+}
 
 .fade-in {
   animation: fade 1.5s ease-in;
@@ -43,26 +55,48 @@ button:hover { transform: scale(1.1); }
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* MENU */
 #menu button {
   width: 200px;
 }
 
+/* SECTIONS */
 .section {
   margin-top: 20px;
 }
 
-.gallery img, .gallery video {
-  width: 120px;
-  margin: 6px;
-  border-radius: 10px;
-   }
-
-video {
-  display: block;
-  margin: 10px auto;
-  width: 260px;
+/* MEMORIES */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+.gallery .row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.gallery .row.center {
+  justify-content: center;
+}
+
+.gallery img {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.gallery video {
+  width: 200px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* CONFETTI */
 #confetti {
   position: fixed;
   top: 0;
@@ -71,4 +105,4 @@ video {
   height: 100%;
   pointer-events: none;
   z-index: 0;
-} 
+}
