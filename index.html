@@ -8,15 +8,18 @@
 <body>
 
 <div class="card">
+
+  <!-- TITLU -->
   <h1 class="fade-in">Will you be my Valentine? 💕</h1>
 
+  <!-- BUTOANE YES / NO -->
   <div class="buttons fade-in">
     <button id="yes">YES</button>
     <button id="no">NO</button>
   </div>
 
-  <!-- MENIU -->
-  <div id="menu" class="hidden fade-in">
+  <!-- MENIU (ASCUNS LA ÎNCEPUT) -->
+  <div id="menu" class="hidden">
     <h2>Choose 💖</h2>
     <button onclick="showSection('message')">💌 Message</button>
     <button onclick="showSection('memories')">📸 Memories</button>
@@ -26,23 +29,17 @@
   <!-- MESSAGE -->
   <div id="message" class="section hidden">
     <p>De Ziua Îndrăgostiților vreau să-ți spun cât de mult însemni pentru mine ❤️</p>
-    <p>
-      Alături de tine, zilele prind nuanțe noi, iar clipele simple devin
-      momente speciale.
-    </p>
-    <p>
-      Ești acel <b>Home</b> pe care nu știam că îl caut 💞
-    </p>
+    <p>Alături de tine, zilele prind nuanțe noi și clipele simple devin magice.</p>
+    <p>Ești acel <b>Home</b> pe care nu știam că îl caut.</p>
     <p><b>Te iubesc ❤️</b></p>
   </div>
 
   <!-- MEMORIES -->
   <div id="memories" class="section hidden gallery">
     <div class="row">
-      <img src="assets/img/1.jpg" alt="memory1">
-      <img src="assets/img/2.jpg" alt="memory2">
+      <img src="assets/img/1.jpg">
+      <img src="assets/img/2.jpg">
     </div>
-
     <div class="row center">
       <video controls>
         <source src="assets/video/memory.mp4" type="video/mp4">
@@ -56,6 +53,7 @@
     <button onclick="startGift()">Deschide 💖</button>
     <p id="typewriter"></p>
   </div>
+
 </div>
 
 <canvas id="confetti"></canvas>
