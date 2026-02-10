@@ -42,21 +42,16 @@ button:hover {
   background: #ccc;
 }
 
-/* FOARTE IMPORTANT */
-#menu {
+/* ASCUNDERE TOTALĂ LA START */
+#menu,
+.section {
   display: none;
 }
 
 .section {
-  display: none;
   margin-top: 20px;
 }
 
-.section.active {
-  display: block;
-}
-
-/* Memories */
 .gallery {
   display: flex;
   flex-direction: column;
