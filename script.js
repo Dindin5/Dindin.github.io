@@ -3,36 +3,32 @@ const no = document.getElementById("no");
 const menu = document.getElementById("menu");
 const music = document.getElementById("music");
 
-const giftText =
-  "Cadoul meu sunt eu, timpul meu și toată iubirea mea ❤️";
-
+const giftText = "Cadoul meu sunt eu, timpul meu și toată iubirea mea ❤️";
 let giftIndex = 0;
 
-// NO fuge
+/* NO fuge */
 no.addEventListener("mouseover", () => {
   const x = Math.random() * 200 - 100;
   const y = Math.random() * 200 - 100;
   no.style.transform = `translate(${x}px, ${y}px)`;
 });
 
-// YES
+/* YES */
 yes.addEventListener("click", () => {
   document.querySelector(".buttons").style.display = "none";
   menu.classList.remove("hidden");
 
-  music.currentTime = 0;
   music.play().catch(() => {});
-
   launchConfetti();
 });
 
-// afișare secțiuni
+/* ARATĂ DOAR SECȚIUNEA ALEASĂ */
 function showSection(id) {
   document.querySelectorAll(".section").forEach(sec => {
-    sec.style.display = "none";
+    sec.classList.add("hidden");
   });
 
-  document.getElementById(id).style.display = "block";
+  document.getElementById(id).classList.remove("hidden");
 
   if (id !== "gift") {
     document.getElementById("typewriter").innerHTML = "";
@@ -40,18 +36,16 @@ function showSection(id) {
   }
 }
 
-// GIFT – typewriter
+/* GIFT TYPEWRITER */
 function startGift() {
   const el = document.getElementById("typewriter");
   el.innerHTML = "";
+  giftIndex = 0;
 
   const interval = setInterval(() => {
     el.innerHTML += giftText[giftIndex];
     giftIndex++;
-
-    if (giftIndex >= giftText.length) {
-      clearInterval(interval);
-    }
+    if (giftIndex >= giftText.length) clearInterval(interval);
   }, 60);
 }
 
