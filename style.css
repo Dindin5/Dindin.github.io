@@ -1,70 +1,476 @@
+/* ============================================
+   VALENTINE WEBSITE - STYLE COMPLET
+   Toți stilurile într-un singur fișier organizat
+============================================ */
+
+/* ===== 1. RESET & BASE STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
+  padding: 20px;
+  color: #333;
+  line-height: 1.6;
 }
 
+/* ===== 2. MAIN CARD CONTAINER ===== */
 .card {
-  background: white;
-  padding: 40px;
-  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px 35px;
+  border-radius: 25px;
   text-align: center;
-  width: 420px;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.25),
+    0 5px 15px rgba(255, 77, 109, 0.1);
   position: relative;
-  z-index: 1;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.3),
+    0 8px 20px rgba(255, 77, 109, 0.15);
+}
+
+/* ===== 3. TYPOGRAPHY ===== */
+h1 {
+  color: #ff4d6d;
+  font-size: 2.4em;
+  margin-bottom: 25px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+h2 {
+  color: #d63384;
+  font-size: 1.8em;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+h3 {
+  color: #c9184a;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 15px;
+  font-size: 1.05em;
+}
+
+/* ===== 4. BUTTONS ===== */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin: 30px 0;
+  flex-wrap: wrap;
 }
 
 button {
-  padding: 14px 26px;
-  margin: 10px;
-  font-size: 16px;
+  padding: 16px 32px;
+  font-size: 1.1em;
   border: none;
-  border-radius: 12px;
+  border-radius: 50px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  min-width: 140px;
+  position: relative;
+  overflow: hidden;
 }
 
-button:hover { transform: scale(1.1); }
-
-#yes { background: #ff4d6d; color: white; }
-#no { background: #ccc; }
-
-.hidden { display: none; }
-
-.fade-in {
-  animation: fade 1.5s ease-in;
+button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
 }
 
-@keyframes fade {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+button:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
 }
 
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(20, 20);
+    opacity: 0;
+  }
+}
+
+/* YES Button */
+#yes {
+  background: linear-gradient(135deg, #ff4d6d 0%, #ff8fa3 100%);
+  color: white;
+  box-shadow: 
+    0 8px 20px rgba(255, 77, 109, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  border: 2px solid transparent;
+  background-size: 200% 100%;
+  background-position: 0% 0%;
+}
+
+#yes:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 
+    0 12px 30px rgba(255, 77, 109, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  background-position: 100% 0%;
+  animation: gradientShift 0.5s ease;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; }
+}
+
+/* NO Button */
+#no {
+  background: linear-gradient(135deg, #6c757d 0%, #adb5bd 100%);
+  color: white;
+  box-shadow: 
+    0 8px 20px rgba(108, 117, 125, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  border: 2px solid transparent;
+}
+
+#no:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 12px 30px rgba(108, 117, 125, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+/* Menu Buttons */
 #menu button {
-  width: 200px;
+  width: 100%;
+  max-width: 280px;
+  margin: 12px 0;
+  padding: 18px 24px;
+  background: linear-gradient(135deg, #ffafcc 0%, #ffc8dd 100%);
+  color: #590d22;
+  font-size: 1.1em;
+  border: 2px solid #ffb3c1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+#menu button:hover {
+  background: linear-gradient(135deg, #ff8fab 0%, #ffb3c1 100%);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(255, 143, 171, 0.3);
+  color: #370617;
+}
+
+/* ===== 5. SECTIONS & VISIBILITY ===== */
+.hidden {
+  display: none !important;
 }
 
 .section {
-  margin-top: 20px;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 2px solid #ffccd5;
+  animation: sectionAppear 0.6s ease-out;
 }
 
-.gallery img, .gallery video {
-  width: 120px;
-  margin: 6px;
+@keyframes sectionAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== 6. MESSAGE SECTION ===== */
+#message {
+  text-align: left;
+  padding: 25px;
+  background: linear-gradient(to bottom right, #fff9fa, #fff0f6);
+  border-radius: 15px;
+  border: 2px solid #ffccd5;
+  box-shadow: inset 0 0 20px rgba(255, 179, 193, 0.2);
+}
+
+#message p {
+  margin-bottom: 20px;
+  padding-left: 10px;
+  border-left: 3px solid #ff4d6d;
+  padding-left: 15px;
+  line-height: 1.7;
+  position: relative;
+}
+
+#message p:last-child {
+  text-align: right;
+  font-style: italic;
+  font-weight: bold;
+  color: #ff4d6d;
+  font-size: 1.2em;
+  border-left: none;
+  padding-left: 0;
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px dashed #ffb3c1;
+}
+
+/* ===== 7. MEMORIES SECTION ===== */
+#memories {
+  padding: 20px 15px;
+}
+
+#memories h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.6em;
+  color: #ff4d6d;
+}
+
+.memories-subtitle {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 25px;
+  font-size: 1.05em;
+}
+
+.memories-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin: 25px 0;
+}
+
+.memory-item {
+  perspective: 1000px;
+}
+
+.photo-frame, .video-frame {
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-frame::before, .video-frame::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #ff4d6d, #ff8fa3);
+  border-radius: 18px 18px 0 0;
+}
+
+.photo-frame:hover, .video-frame:hover {
+  transform: 
+    translateY(-10px) 
+    rotateX(5deg) 
+    scale(1.03);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.9),
+    inset 0 0 30px rgba(255, 179, 193, 0.1);
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 3px solid #ffafcc;
+  margin-bottom: 18px;
+  transition: transform 0.5s ease;
+}
+
+.photo-frame:hover img {
+  transform: scale(1.05);
+}
+
+.photo-label {
+  color: #d63384;
+  font-weight: 600;
+  font-size: 1em;
+  padding: 10px 15px;
+  background: linear-gradient(to right, #fff0f6, #fff9fa);
   border-radius: 10px;
+  border: 1px solid #ffccd5;
+  text-align: center;
+  margin-top: auto;
 }
 
-video {
-  display: block;
-  margin: 10px auto;
-  width: 260px;
+.video-frame video {
+  width: 100%;
+  height: 220px;
+  border-radius: 12px;
+  border: 3px solid #90e0ef;
+  margin-bottom: 18px;
+  background: #000;
+  object-fit: cover;
 }
 
+.video-label {
+  color: #1a73e8;
+  font-weight: 600;
+  font-size: 1em;
+  padding: 10px 15px;
+  background: linear-gradient(to right, #e8f0fe, #f8f9fa);
+  border-radius: 10px;
+  border: 1px solid #bbdefb;
+  text-align: center;
+  margin-top: auto;
+}
+
+.memories-footer {
+  color: #ff4d6d;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-top: 30px;
+  padding: 18px;
+  background: linear-gradient(to right, #fff0f6, #fff9fa);
+  border-radius: 15px;
+  border: 2px dashed #ffb3c1;
+  text-align: center;
+  animation: gentlePulse 3s infinite ease-in-out;
+}
+
+@keyframes gentlePulse {
+  0%, 100% { 
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+/* ===== 8. GIFT SECTION ===== */
+#gift {
+  padding: 25px;
+  background: linear-gradient(135deg, #fff9fa, #fff0f6);
+  border-radius: 15px;
+  border: 2px solid #ffccd5;
+}
+
+#gift p {
+  font-size: 1.3em;
+  color: #d63384;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+#gift a {
+  display: inline-block;
+  padding: 18px 35px;
+  background: linear-gradient(135deg, #ff4d6d 0%, #ff8fa3 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1em;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(255, 77, 109, 0.4);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+#gift a::before {
+  content: '🎁';
+  margin-right: 10px;
+}
+
+#gift a:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(255, 77, 109, 0.6);
+  background: linear-gradient(135deg, #ff335c 0%, #ff758f 100%);
+}
+
+#gift a:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* ===== 9. ANIMATIONS ===== */
+.fade-in {
+  animation: fadeInUp 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Heart beat animation for YES button on load */
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  15% { transform: scale(1.1); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.08); }
+  60% { transform: scale(1); }
+}
+
+.heartbeat {
+  animation: heartbeat 2s infinite;
+}
+
+/* ===== 10. CONFETTI CANVAS ===== */
 #confetti {
   position: fixed;
   top: 0;
@@ -72,5 +478,228 @@ video {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 0;
+  z-index: 5;
 }
+
+/* ===== 11. RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+    min-height: 100vh;
+    display: block;
+  }
+  
+  .card {
+    padding: 30px 25px;
+    margin: 20px auto;
+    max-width: 95%;
+    border-radius: 20px;
+  }
+  
+  h1 {
+    font-size: 1.9em;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 1.6em;
+  }
+  
+  h3 {
+    font-size: 1.4em;
+  }
+  
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin: 25px 0;
+  }
+  
+  button {
+    width: 100%;
+    max-width: 280px;
+    padding: 18px 24px;
+    font-size: 1.1em;
+  }
+  
+  #menu button {
+    max-width: 100%;
+  }
+  
+  .memories-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .photo-frame img,
+  .video-frame video {
+    height: 190px;
+  }
+  
+  .memory-item {
+    max-width: 100%;
+  }
+  
+  #message, #gift {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 25px 20px;
+    border-radius: 18px;
+  }
+  
+  h1 {
+    font-size: 1.7em;
+  }
+  
+  button {
+    padding: 16px 20px;
+    font-size: 1em;
+  }
+  
+  .photo-frame, .video-frame {
+    padding: 15px;
+  }
+  
+  .photo-frame img,
+  .video-frame video {
+    height: 170px;
+  }
+  
+  .photo-label, .video-label {
+    font-size: 0.95em;
+    padding: 8px 12px;
+  }
+  
+  .memories-footer {
+    font-size: 1.1em;
+    padding: 15px;
+  }
+}
+
+/* ===== 12. UTILITY CLASSES ===== */
+.text-center {
+  text-align: center;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.p-20 {
+  padding: 20px;
+}
+
+/* ===== 13. LOADING STATES ===== */
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.loading {
+  position: relative;
+  color: transparent !important;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== 14. FOCUS STATES FOR ACCESSIBILITY ===== */
+button:focus,
+a:focus {
+  outline: 3px solid rgba(255, 77, 109, 0.6);
+  outline-offset: 2px;
+}
+
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ===== 15. PRINT STYLES ===== */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .card {
+    box-shadow: none !important;
+    border: 2px solid #ccc !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  button, #confetti, audio {
+    display: none !important;
+  }
+}
+
+/* ===== 16. SMOOTH SCROLLING ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== 17. IMAGE FALLBACK STYLES ===== */
+img {
+  background: linear-gradient(45deg, #ffccd5, #fff0f6);
+}
+
+img:before {
+  content: "🖼️";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  color: #ff4d6d;
+}
+
+/* ===== 18. CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 154, 158, 0.1);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #ff4d6d, #ff8fa3);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #ff335c, #ff758f);
+}
+
+/* ===== END OF STYLES ===== */
