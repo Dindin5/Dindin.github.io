@@ -3,6 +3,11 @@ const no = document.getElementById("no");
 const menu = document.getElementById("menu");
 const music = document.getElementById("music");
 
+const giftText =
+  "Cadoul meu sunt eu, timpul meu și toată iubirea mea ❤️";
+
+let giftIndex = 0;
+
 // NO fuge
 no.addEventListener("mouseover", () => {
   const x = Math.random() * 200 - 100;
@@ -21,13 +26,33 @@ yes.addEventListener("click", () => {
   launchConfetti();
 });
 
-// arată secțiuni
+// afișare secțiuni
 function showSection(id) {
   document.querySelectorAll(".section").forEach(sec => {
     sec.style.display = "none";
   });
 
   document.getElementById(id).style.display = "block";
+
+  if (id !== "gift") {
+    document.getElementById("typewriter").innerHTML = "";
+    giftIndex = 0;
+  }
+}
+
+// GIFT – typewriter
+function startGift() {
+  const el = document.getElementById("typewriter");
+  el.innerHTML = "";
+
+  const interval = setInterval(() => {
+    el.innerHTML += giftText[giftIndex];
+    giftIndex++;
+
+    if (giftIndex >= giftText.length) {
+      clearInterval(interval);
+    }
+  }, 60);
 }
 
 /* CONFETTI */
