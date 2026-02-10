@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine 💘</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="card">
+  <h1 class="fade-in">Will you be my Valentine? 💕</h1>
+
+  <div class="buttons fade-in">
+    <button id="yes">YES</button>
+    <button id="no">NO</button>
+  </div>
+
+  <!-- MENIU DUPĂ YES -->
+  <div id="menu" class="hidden">
+    <h2>Choose 💖</h2>
+    <button onclick="showSection('message')">💌 Message</button>
+    <button onclick="showSection('memories')">📸 Memories</button>
+    <button onclick="showSection('gift')">🎁 Gift</button>
+  </div>
+
+  <!-- MESSAGE -->
+  <div id="message" class="hidden section">
+    <p>De Ziua Îndrăgostiților vreau să-ți spun cât de mult însemni pentru mine. ❤️</p>
+    <p>Alaturi de tine, zilele prind nuante noi,iar clipele simple alaturi de tine pe care le trasformi in momente speciale sunt cele mai frumoase. </p>
+    <p>Iti multumesc pentru tot ce aduci in viata mea. Eti acel Home pe care nu stiam ca il caut si fara de care nu pot. </p>
+    <p>Te iubesc ❤️ </p>
+  </div>
+
+  <!-- MEMORIES -->
+  <div id="memories" class="hidden section gallery">
+    <img src="assets/img/1.jpg">
+    <img src="assets/img/2.jpg">
+    <video controls width="280">
+      <source src="assets/video/memory.mp4" type="video/mp4">
+      Browserul tău nu suportă video.
+    </video>
+  </div>
+
+  <!-- GIFT -->
+  <div id="gift" class="hidden section">
+    <p>Surpriza te așteaptă 🎁</p>
+    <a href="https://example.com" target="_blank">Deschide cadoul 🎁</a>
+  </div>
+</div>
+
+<canvas id="confetti"></canvas>
+<audio id="music" src="assets/music/song.mp3"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
